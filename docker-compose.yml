@@ -1,0 +1,19 @@
+version: "3"
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=main
+  # graphql-server: # prodution
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: ./express-graphql
+  #   ports:
+  #     - "4000:4000"
