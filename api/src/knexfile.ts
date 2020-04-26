@@ -1,6 +1,9 @@
 import dotenv from "dotenv";
 
-dotenv.config({ path: __dirname + "/../.env" });
+if (process.env.NODE_ENV !== "production") {
+  // development env variables
+  dotenv.config({ path: __dirname + "/../dev.env" });
+}
 
 module.exports = {
   development: {

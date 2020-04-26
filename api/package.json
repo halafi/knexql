@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run dev",
+    "start": "NODE_ENV=development npm run dev",
     "build": "rimraf dist && tsc",
     "server": "node dist/index",
     "dev": "run-p watch:*",
     "watch:server": "nodemon dist/index",
     "watch:src": "tsc --watch",
-    "initdb": "npm run build && npm run migrate && npm run seed",
+    "initdb": "npm run build && npm run unmigrate && npm run migrate && npm run seed",
     "migrate": "knex --cwd dist migrate:latest",
     "unmigrate": "knex --cwd dist migrate:rollback",
     "seed": "knex --cwd dist seed:run"

@@ -10,9 +10,11 @@ const port = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(morgan("dev"));
+app.use(morgan("tiny"));
 
 app.use("/todos", todos);
 app.use("/users", users);
 
-app.listen(port, () => console.log(`[server] listening on port ${port}!`));
+app.listen(port, () =>
+  console.log(`[server] ENV=${process.env.NODE_ENV} listening on port ${port}!`)
+);

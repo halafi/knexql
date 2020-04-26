@@ -1,16 +1,26 @@
 version: "3"
 services:
-  db:
-    build:
-      context: ./db
-      dockerfile: Dockerfile
+  postgres:
+    image: "postgres:12.2"
     ports:
       - 5432:5432
     restart: always
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=main
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    depends_on:
+      - "postgres"
+    environment:
+      - DB_URL=${DB_URL}
+      - PORT=8000
+      - NODE_ENV=${NODE_ENV}
   # graphql-server: # prodution
   #   build:
   #     dockerfile: Dockerfile
