@@ -1,20 +1,18 @@
 import express from "express";
 import morgan from "morgan";
-import db from "./data/db";
+import cors from "cors";
+import bodyParser from "body-parser";
+import users from "./routes/users";
+import todos from "./routes/todos";
 
 const app = express();
 const port = process.env.PORT || 8000;
 
-app.use(morgan("tiny"));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(morgan("dev"));
 
-app.get("/todo", async (req, res) => {
-  const todos = await db("todo");
-  res.json({ todos });
-});
-
-app.get("/user", async (req, res) => {
-  const users = await db("user");
-  res.json({ users });
-});
+app.use("/todos", todos);
+app.use("/users", users);
 
 app.listen(port, () => console.log(`[server] listening on port ${port}!`));

@@ -26,6 +26,7 @@ export function up(knex: Knex): Promise<any> {
         .inTable("user")
         .onDelete("cascade");
       table.string("text", 255).notNullable();
+      table.boolean("completed").notNullable().defaultTo(false);
       table
         .timestamp("createdAt")
         .notNullable()
