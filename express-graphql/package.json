@@ -1,0 +1,33 @@
+{
+  "name": "express-graphql-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.ts",
+  "scripts": {
+    "start": "NODE_ENV=development npm run dev",
+    "build": "rimraf dist && tsc",
+    "server": "node dist/index",
+    "dev": "run-p watch:*",
+    "watch:server": "nodemon dist/index",
+    "watch:src": "tsc --watch"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/morgan": "^1.9.0",
+    "@types/node": "^13.13.2",
+    "nodemon": "^2.0.3",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3"
+  }
+}

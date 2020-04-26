@@ -21,9 +21,11 @@ services:
       - DB_URL=${DB_URL}
       - PORT=8000
       - NODE_ENV=${NODE_ENV}
-  # graphql-server: # prodution
-  #   build:
-  #     dockerfile: Dockerfile
-  #     context: ./express-graphql
-  #   ports:
-  #     - "4000:4000"
+  graphql-server:
+    build:
+      dockerfile: Dockerfile
+      context: ./express-graphql
+    ports:
+      - "4000:4000"
+    environment:
+      - API_URL=https://api:8000
