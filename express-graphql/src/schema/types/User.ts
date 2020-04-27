@@ -1,9 +1,11 @@
 import {
   GraphQLID,
+  GraphQLList,
   GraphQLNonNull,
   GraphQLObjectType,
   GraphQLString,
 } from "graphql";
+import Todo from "./Todo";
 
 const User = new GraphQLObjectType({
   name: "User",
@@ -26,9 +28,13 @@ const User = new GraphQLObjectType({
     createdAt: {
       type: GraphQLNonNull(GraphQLString),
     },
-    // todos: {
-     // TODO lol
-    // }
+    todos: {
+      type: GraphQLList(Todo),
+      resolve: (user, _, ctx) => {
+        console.log(user);
+        return ctx.userTodosLoader.load(user.id);
+      },
+    },
   }),
 });
 

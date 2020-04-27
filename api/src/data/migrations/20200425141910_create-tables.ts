@@ -2,8 +2,13 @@ import * as Knex from "knex";
 
 export function up(knex: Knex): Promise<any> {
   return knex.schema
+    .raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
     .createTable("user", (table) => {
-      table.increments("id").primary();
+      table
+        .uuid("id")
+        .notNullable()
+        .primary()
+        .defaultTo(knex.raw("uuid_generate_v4()"));
       table.string("email", 255).notNullable();
       table.string("firstName", 255).notNullable();
       table.string("lastName", 255).notNullable();
@@ -17,10 +22,13 @@ export function up(knex: Knex): Promise<any> {
         .defaultTo(knex.raw("CURRENT_TIMESTAMP"));
     })
     .createTable("todo", (table) => {
-      table.increments("id").primary();
       table
-        .integer("userId")
-        .unsigned()
+        .uuid("id")
+        .notNullable()
+        .primary()
+        .defaultTo(knex.raw("uuid_generate_v4()"));
+      table
+        .uuid("userId")
         .notNullable()
         .references("id")
         .inTable("user")
@@ -39,5 +47,8 @@ export function up(knex: Knex): Promise<any> {
 }
 
 export function down(knex: Knex): Promise<any> {
-  return knex.schema.dropTable("todo").dropTable("user");
+  return knex.schema
+    .dropTable("todo")
+    .dropTable("user")
+    .raw('DROP EXTENSION IF EXISTS "uuid-ossp"');
 }

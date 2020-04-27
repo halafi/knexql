@@ -4,6 +4,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from "graphql";
+import User from "./User";
 
 const Todo = new GraphQLObjectType({
   name: "Todo",
@@ -14,8 +15,9 @@ const Todo = new GraphQLObjectType({
     text: {
       type: GraphQLNonNull(GraphQLString),
     },
-    userId: {
-      type: GraphQLNonNull(GraphQLID),
+    user: {
+      type: GraphQLNonNull(User),
+      resolve: (todo, _, ctx) => ctx.userLoader.load(todo.userId),
     },
     updatedAt: {
       type: GraphQLNonNull(GraphQLString),
