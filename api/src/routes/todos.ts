@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     !text ||
     !userId ||
     typeof text !== "string" ||
-    typeof userId !== "number" ||
+    typeof userId !== "string" ||
     (completed && typeof completed !== "boolean")
   ) {
     res.status(400).json({ error: "Invalid body" });

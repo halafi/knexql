@@ -18,7 +18,6 @@ const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 
 app.use(

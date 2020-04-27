@@ -1,17 +1,10 @@
 import { GraphQLSchema } from "graphql";
 import rootQuery from "./queries";
-
-// const mutationType = new GraphQLObjectType({
-//   name: "Mutation",
-//   fields: () => ({
-//     addRecord: record.addRecordMutation,
-//     updateUser: user.updateUserMutation,
-//   }),
-// });
+import rootMutation from "./mutations";
 
 const schema = new GraphQLSchema({
   query: rootQuery,
-  // mutation: mutationType,
+  mutation: rootMutation,
 });
 
 export default schema;
