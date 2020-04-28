@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8001;
 
 app.use(cors());
 app.use(bodyParser.json());

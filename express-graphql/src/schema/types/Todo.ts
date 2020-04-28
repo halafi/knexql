@@ -3,6 +3,7 @@ import {
   GraphQLNonNull,
   GraphQLObjectType,
   GraphQLString,
+  GraphQLBoolean,
 } from "graphql";
 import User from "./User";
 
@@ -14,6 +15,9 @@ const Todo = new GraphQLObjectType({
     },
     text: {
       type: GraphQLNonNull(GraphQLString),
+    },
+    completed: {
+      type: GraphQLNonNull(GraphQLBoolean),
     },
     user: {
       type: GraphQLNonNull(User),
