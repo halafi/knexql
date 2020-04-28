@@ -29,3 +29,4 @@ services:
       - "4000:4000"
     environment:
       - API_URL=https://api:8000
+  # TODO: frontend
