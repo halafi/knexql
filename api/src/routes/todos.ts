@@ -1,10 +1,10 @@
 import express from "express";
-import apicache from "apicache";
+// import apicache from "apicache";
 import db from "../data/db";
 
 const router = express.Router();
 
-const cache = apicache.middleware("15 seconds");
+// const cache = apicache.middleware("15 seconds");
 
 router.post("/", (req, res) => {
   const { text, userId, completed } = req.body;
@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
   }
 });
 
-router.get("/", cache, (_, res) => {
+router.get("/", (_, res) => {
   db("todo")
     .select()
     .orderBy("id")
@@ -38,7 +38,7 @@ router.get("/", cache, (_, res) => {
     });
 });
 
-router.get("/:id", cache, (req, res) => {
+router.get("/:id", (req, res) => {
   db("todo")
     .select()
     .where({ id: req.params.id })
@@ -52,7 +52,7 @@ router.get("/:id", cache, (req, res) => {
 router.put("/:id", (req, res) => {
   const { id } = req.params;
   const { completed, text } = req.body;
-  if (!completed && !text) {
+  if (typeof completed !== "boolean" && !text) {
     res.status(400).json({ error: "Invalid body" });
   } else {
     db("todo")

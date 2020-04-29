@@ -1,12 +1,12 @@
 import express from "express";
-import apicache from "apicache";
+// import apicache from "apicache";
 import db from "../data/db";
 
 const router = express.Router();
 
-const cache = apicache.middleware("15 seconds");
+// const cache = apicache.middleware("15 seconds");
 
-router.get("/", cache, (_, res) => {
+router.get("/", (_, res) => {
   db("user")
     .select()
     .orderBy("id")
@@ -17,7 +17,7 @@ router.get("/", cache, (_, res) => {
     });
 });
 
-router.get("/:id", cache, (req, res) => {
+router.get("/:id", (req, res) => {
   db("user")
     .select()
     .where({ id: req.params.id })
@@ -28,7 +28,7 @@ router.get("/:id", cache, (req, res) => {
     });
 });
 
-router.get("/:userId/todos", cache, (req, res) => {
+router.get("/:userId/todos", (req, res) => {
   const { userId } = req.params;
   db("todo")
     .select()

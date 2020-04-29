@@ -1,4 +1,4 @@
-# Overengineered, expensive TODO app
+# Overengineered, expensive, not very useful Todo app monorepo
 
 ## Deployment
 
@@ -19,11 +19,9 @@ Setup postgres:
 
 ### Graphql
 
-1. Setup postgres and run it (see above)
-2. Run API `$ cd api && npm run start` (default port 8000)
-3. Run GraphQL dev server `$ cd express-graphql && npm run start` (default port 8001)
+5. Run API `$ cd api && npm run start` (default port 8000)
+6. Run GraphQL dev server `$ cd express-graphql && npm run start` (default port 8001)
 
 ### Frontend
 
-1. Do the above
-2. Run Frontend `$ cd frontend && npm run start` (default port 8080)
+7. Run Frontend `$ cd frontend && npm run start` (default port 8080)
