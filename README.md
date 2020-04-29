@@ -1,10 +1,10 @@
-# Overengineered TODO app
+# Overengineered, expensive TODO app
 
-## Deployment (Production or Staging)
+## Deployment
 
 1. `$ docker-compose up`
-2. init db: `$ docker exec -it $(docker ps | grep portfolio_api_1 | awk '{ print $1 }') /bin/sh -c 'npm run migrate'`
-3. seed db: `$ docker exec -it $(docker ps | grep portfolio_api_1 | awk '{ print $1 }') /bin/sh -c 'npm run seed'`
+2. init db: `$ docker exec -it $(docker ps | grep knexql_api_1 | awk '{ print $1 }') /bin/sh -c 'npm run migrate'`
+3. seed db: `$ docker exec -it $(docker ps | grep knexql_api_1 | awk '{ print $1 }') /bin/sh -c 'npm run seed'`
 
 ## Development
 
@@ -27,8 +27,3 @@ Setup postgres:
 
 1. Do the above
 2. Run Frontend `$ cd frontend && npm run start` (default port 8080)
-
-## TODOs
-
-- [ ] Secure ENV vars
-- [ ] Production setup

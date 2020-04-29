@@ -1,8 +1,8 @@
-ARG PORT=8000
+ARG PORT=8080
 
 FROM node:11
 
-WORKDIR /usr/src/api
+WORKDIR /usr/src/app
 
 COPY package.json .
 
@@ -14,4 +14,5 @@ EXPOSE ${PORT}
 
 COPY . .
 
-CMD [ "npm", "run", "server" ]
+CMD [ "npm", "run", "build" ]
+CMD [ "npx", "http-server", "./build" ]

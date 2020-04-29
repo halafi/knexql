@@ -1,3 +1,5 @@
+ARG PORT=8001
+
 FROM node:11
 
 WORKDIR /usr/src/app
@@ -8,7 +10,7 @@ RUN npm install
 
 ENV NODE_ENV=production
 
-EXPOSE 4000
+EXPOSE ${PORT}
 
 COPY . .
 
