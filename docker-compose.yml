@@ -11,7 +11,7 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
   api:
     build:
-      context: ./api
+      context: ./packages/api
       dockerfile: Dockerfile
       args:
         PORT: ${API_PORT}
@@ -26,7 +26,7 @@ services:
   graphql:
     build:
       dockerfile: Dockerfile
-      context: ./express-graphql
+      context: ./packages/graphql
       args:
         PORT: ${GRAFQL_PORT}
     ports:
@@ -36,7 +36,7 @@ services:
       - API_URL=https://api:${API_PORT}
   frontend:
     build:
-      context: ./frontend
+      context: ./packages/frontend
       dockerfile: Dockerfile
     ports:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
