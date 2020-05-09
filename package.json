@@ -1,0 +1,19 @@
+{
+  "name": "knexql",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "start": "lerna run start",
+    "start:api": "cd packages/api && yarn start",
+    "start:grapqhl": "cd packages/graphql && yarn start",
+    "start:frontend": "cd packages/frontend && yarn start",
+    "initdb": "cd packages/api && yarn initdb",
+    "test": "lerna run --parallel test"
+  },
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  }
+}
